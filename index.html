@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+height:55px;
+  overflow: hidden;
+  background-color: Orange;
+}
+
+.topnav a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+<style>
+	@media screen and (max-width: 1080vw) {
+		.main-content,
+		.sidebar {
+			width: 100%; margin: 0; padding: 10px;
+		}
+	}
+
+
+	/* Book */
+	
+	.book {
+		position: relative; width: 50vw; height: 90vw; transition: transform 0.5s; flex-wrap: wrap; display: flex; z-index: 5; margin: auto;
+		/* Center the book horizontally */
+		margin-top: 5vh; position: relative;
+		/* Relative positioning for button placement */
+	}
+	
+	.paper {
+		position: absolute; width: 100%; height: 100%; top: 0; left: 0; perspective: 1500px;
+	}
+	
+	.front,
+	.back {
+		background-color: white; position: absolute; width: 100%; height: 100%; top: 0; left: 0; transform-origin: left; transition: transform 0.5s;
+	}
+	
+	.front {
+		z-index: 1; backface-visibility: hidden; -left: 3px solid powderblue;
+	}
+	
+	.back {
+		z-index: 0;
+	}
+	
+	.front-content,
+	.back-content {
+		width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;
+	}
+	
+	.back-content {
+		transform: rotateY(180deg)
+	}
+	/* Paper flip effect */
+	
+	.flipped .front,
+	.flipped .back {
+		transform: rotateY(-180deg);
+	}
+	
+
+
+	/* Paper stack order */
+	
+	#p1 {
+		z-index: 3;
+	}
+	
+	#p2 {
+		z-index: 2;
+	}
+	
+	#p3 {
+		z-index: 1;
+	}
+	
+	.pseudo-iframe {
+		width: ;/* Responsive width */
+		height: 80vh;/* Adjustable height */
+		border: 1px solid #ccc;/* iFrame-like border */
+		overflow: auto;/* Scrollbar if content overflows */
+		position: relative;/* Positioning context for the content */
+		background: #fff;/* Background color to mimic an iframe's default styling */
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);/* Optional: adds shadow for depth */
+	}
+	
+	.iframe-content {
+		padding: 20px;/* Padding around the content */
+		height: 100%;/* Full height of the container */
+	}
+
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <button id="prev-btn" class="control-button"style="margin:20px;">Previous Page </button>
+			<button id="next-btn" class="control-button">Next Page</button>
+         
+			<label for="zoom-slider">Zoom:</label>
+			<input type="range" id="zoom-slider" min="50" max="600" value="100">
+		</div>
+            </div>
+			
+
+<div class="pseudo-iframe">
+	<div class="iframe-content">
+		<!-- Embed your content here -->
+
+		<p>This is a simulated iframe-like container.</p
+
+	
+
+
+
+		<div id="pannable-container">
+
+			<div id="pannable-content">
+
+				<div class="container">
+
+					<!-- Book -->
+
+					<div id="book" class="book">
+
+						<!-- Paper 1 -->
+
+						<div id="p1" class="paper">
+
+							<div class="front">
+
+								<div id="f1" class="front-content">
+
+									<img src="https://i.ibb.co/PGwyzt8/pg1.png" alt="pg-1" style="height:95%; width: 100%;" loading="lazy" decoding="async">
+
+								</div>
+
+							</div>
+
+							<div class="back">
+
+								<div id="b1" class="back-content">
+
+									<img src="https://i.ibb.co/R4kvtBr/pg2.png" alt="pg-2" style="height:95%; width: 100%;" loading="lazy" decoding="async">
+
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- Paper 2 -->
+
+						<div id="p2" class="paper">
+
+							<div class="front">
+
+								<div id="f2" class="front-content">
+
+									<img src="https://i.ibb.co/9pMnwSG/pg3.png" alt="pg-3" style="height:95%; width: 100%;" loading="lazy" decoding="async">
+
+
+								</div>
+							</div>
+
+							<div class="back">
+
+								<div id="b2" class="back-content">
+									<img src="https://i.ibb.co/GVrWRgr/pg4.png" alt="pg-4" style="height:95%;width:100%;" loading="lazy" decoding="async">
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- Paper 3 -->
+
+						<div id="p3" class="paper">
+
+							<div class="front">
+
+								<div id="f3" class="front-content">
+
+									<img src="https://i.ibb.co/mCqhCYz/pg5.png" alt="pg-5" style="height:95%;width:100%;" loading="lazy" decoding="async">
+
+								</div>
+
+							</div>
+
+							<div class="back">
+
+								<div id="b3" class="back-content">
+
+									<img src="https://i.ibb.co/ZXf2q9M/pg6.png" alt="pg-6" style="height:95%;width:100%;" loading="lazy" decoding="async">
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- Paper 4 -->
+
+						<div id="p4" class="paper">
+
+							<div class="front">
+
+								<div id="f4" class="front-content">
+
+									<img src="https://i.ibb.co/1Kfnn84/pg7.png" alt="pg-7" style="height:95%;width:100%;" loading="lazy" decoding="async">
+
+								</div>
+
+							</div>
+
+							<div class="back">
+
+								<div id="b4" class="back-content">
+
+									<img src="https://i.ibb.co/8DVYvqq/pg8.png" alt="pg-8" style="height:95%;width:100%;" loading="lazy" decoding="async">
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+
+
+
+				<!-- You can place any content here just like inside an actual iframe -->
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
+<script>
+
+
+    // References to DOM Elements 
+
+    const prevBtn = document.querySelector("#prev-btn");
+
+    const nextBtn = document.querySelector("#next-btn");
+
+    const book = document.querySelector("#book");
+
+    const papers = [document.querySelector("#p1"), document.querySelector("#p2"), document.querySelector("#p3"), document.querySelector("#p4"), document.querySelector("#p5")];
+
+    const pannableContent = document.getElementById('pannable-content');
+
+    const zoomSlider = document.getElementById('zoom-slider');
+
+
+
+    // Variables for panning and zooming 
+
+    let zoomFactor = 1;
+
+    let panX = 0;
+
+    let panY = 0;
+
+    let isDragging = false;
+
+    let startX = 0;
+
+    let startY = 0;
+
+
+
+    // Variables for book navigation 
+
+    let currentLocation = 1;
+
+    const numOfPapers = papers.length;
+
+    const maxLocation = numOfPapers + 1;
+
+
+
+    // Event Listener for zoom control 
+
+    zoomSlider.addEventListener('input', () => {
+
+        zoomFactor = zoomSlider.value / 100;
+
+        updateZoomPan();
+
+    });
+
+
+
+    // Function to apply zoom and pan 
+
+    function updateZoomPan() {
+
+        pannableContent.style.transform = `scale(${zoomFactor}) translate(${panX}px, ${panY}px)`;
+
+        if (isDragging) {
+
+            requestAnimationFrame(updateZoomPan);
+
+        }
+
+    }
+
+// Select all image elements
+const images = document.querySelectorAll('img[data-src]'); // Ensure your images have "data-src" attribute instead of "src"
+
+function preloadImage(img) {
+    const src = img.getAttribute("data-src");
+    if (!src) return;
+    img.src = src;
+}
+
+const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        preloadImage(entry.target);
+        imgObserver.unobserve(entry.target);
+    });
+}, { threshold: 0.5 });
+
+images.forEach(img => {
+    imgObserver.observe(img);
+});
+
+    // Initial update for zoom and pan 
+
+    updateZoomPan();
+
+
+
+    // Mouse events for dynamic panning 
+
+    pannableContent.addEventListener('mousedown', (e) => {
+
+        e.preventDefault(); // Prevent default action 
+
+        isDragging = true;
+
+        startX = e.clientX - panX;
+
+        startY = e.clientY - panY;
+
+        pannableContent.style.cursor = 'grabbing';
+
+        requestAnimationFrame(updateZoomPan);
+
+    });
+
+
+
+    document.addEventListener('mouseup', () => {
+
+        isDragging = false;
+
+        pannableContent.style.cursor = 'grab';
+
+    });
+
+
+
+    document.addEventListener('mousemove', (e) => {
+
+        if (isDragging) {
+
+            e.preventDefault(); // Prevent default action during dragging 
+
+            panX = e.clientX - startX;
+
+            panY = e.clientY - startY;
+
+            pannableContent.style.cursor = 'grabbing';
+
+        }
+
+    });
+
+
+
+
+
+    // Event Listeners for navigation buttons 
+
+    prevBtn.addEventListener("click", goPrevPage);
+
+    nextBtn.addEventListener("click", goNextPage);
+
+
+
+    // Functions for page flipping 
+
+    function openBook() {
+
+        book.style.transform = "translateX(50%)";
+
+        prevBtn.style.transform = "translateX(0px)";
+
+        nextBtn.style.transform = "translateX(0px)";
+
+    }
+
+
+
+    function closeBook(isAtBeginning) {
+
+        book.style.transform = isAtBeginning ? "translateX(0%)" : "translateX(0%)";
+
+        prevBtn.style.transform = "translateX(0px)";
+
+        nextBtn.style.transform = "translateX(0px)";
+
+    }
+
+
+
+    function goNextPage() {
+    if (currentLocation < maxLocation) {
+        // Open book for first page
+        if (currentLocation === 1) {
+            openBook();
+        }
+
+        // Turn page
+        papers[currentLocation - 1].classList.add("flipped");
+        papers[currentLocation - 1].style.zIndex = currentLocation;
+
+        // Close book for last page
+        if (currentLocation === numOfPapers) {
+            closeBook(false);
+        }
+
+        currentLocation++;
+    }
+}
+
+function goPrevPage() {
+    if (currentLocation > 1) {
+        currentLocation--;
+
+        // If moving back from the last page
+        if (currentLocation === numOfPapers) {
+            openBook();
+        }
+
+        // If moving back to the first page
+        if (currentLocation === 1) {
+            closeBook(true);
+        }
+
+        // Turn page back
+        papers[currentLocation - 1].classList.remove("flipped");
+        papers[currentLocation - 1].style.zIndex = numOfPapers - currentLocation + 1;
+    }
+}
+
+
+
+</script>
