@@ -99,7 +99,6 @@ height:55px;
 	}
 	
 	.pseudo-iframe {
-		width: ;/* Responsive width */
 		height: 80vh;/* Adjustable height */
 		border: 1px solid #ccc;/* iFrame-like border */
 		overflow: auto;/* Scrollbar if content overflows */
@@ -131,7 +130,7 @@ height:55px;
 	<div class="iframe-content">
 		<!-- Embed your content here -->
 
-		<p>This is a simulated iframe-like container.</p
+		<p></p
 
 	
 
@@ -155,7 +154,13 @@ height:55px;
 
 								<div id="f1" class="front-content">
 
-									<img src="https://i.ibb.co/PGwyzt8/pg1.png" alt="pg-1" style="height:95%; width: 100%;" loading="lazy" decoding="async">
+                                    <<img src="https://i.ibb.co/KF3dXN2/pg1.png" usemap="#image-map">
+
+                                    <map name="image-map">
+                                        <area target="_blank" alt="Geo2" title="Geo2" href="https://shorturl.at/ijnGL" coords="" shape="rect">
+                                        <area target="_blank" alt="geo" title="geo" href="https://shorturl.at/ijnGL" coords="458,842,565,906" shape="rect">
+                                    </map>
+                    
 
 								</div>
 
@@ -491,5 +496,51 @@ function goPrevPage() {
 }
 
 
+// Add touch events for panning and zooming
+pannableContent.addEventListener('touchstart', (e) => {
+    e.preventDefault(); // Prevent default action
+    isDragging = true;
+    startX = e.touches[0].clientX - panX;
+    startY = e.touches[0].clientY - panY;
+    pannableContent.style.cursor = 'grabbing';
+}, { passive: false });
+
+pannableContent.addEventListener('touchmove', (e) => {
+    if (isDragging && e.touches.length === 1) {
+        e.preventDefault(); // Prevent default action
+        panX = e.touches[0].clientX - startX;
+        panY = e.touches[0].clientY - startY;
+        requestAnimationFrame(updateZoomPan);
+    } else if (e.touches.length === 2) {
+        // Implement pinch to zoom
+        handlePinchToZoom(e);
+    }
+}, { passive: false });
+
+document.addEventListener('touchend', () => {
+    isDragging = false;
+    pannableContent.style.cursor = 'grab';
+});
+
+// Function to handle pinch to zoom
+function handlePinchToZoom(e) {
+    const touch1 = e.touches[0];
+    const touch2 = e.touches[1];
+
+    // Calculate distance between two points
+    const currentDistance = Math.sqrt((touch1.clientX - touch2.clientX) ** 2 + (touch1.clientY - touch2.clientY) ** 2);
+
+    if (!lastDistance) {
+        lastDistance = currentDistance;
+    }
+
+    const difference = currentDistance - lastDistance;
+    zoomFactor *= 1 + difference / 300; // Adjust zoom factor based on the difference
+    lastDistance = currentDistance; // Update last distance for the next move
+    updateZoomPan();
+}
+
+// You might need to declare 'lastDistance' outside of these functions to track pinch distance
+let lastDistance;
 
 </script>
